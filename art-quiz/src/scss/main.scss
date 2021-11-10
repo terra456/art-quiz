@@ -5,6 +5,7 @@
 @import "./components/buttons.scss";
 @import "./components/lincs.scss";
 @import "./components/input.scss";
+@import "./components/list.scss";
 
 @import "./layout/header.scss";
 @import "./layout/navigation.scss";
@@ -22,5 +23,9 @@
 
 body {
     background-color: $bg-color;
+    width: 100vw;
+    height: 100vh;
+    padding: 4vh 4vw;
+    box-sizing: border-box;
 }
 

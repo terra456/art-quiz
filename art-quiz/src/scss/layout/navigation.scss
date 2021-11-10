@@ -1,0 +1,60 @@
+.navigation {
+    @include flex ($justify: space-around);
+
+    @media screen and (max-width: $tablet) {        
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 75px;
+        z-index: 5;
+        box-sizing: border-box;
+        border: 1px solid $main-color;
+        border-radius: 20px 20px 0px 0px;
+        background-color: $bg-color;
+
+        &__list {
+            @include flex ($justify: space-around);
+            width: 80%;
+        }
+
+        &__link {
+            @include text-header ($size: 14px, $line-height: 18px);
+
+        }
+
+        &__item {
+            position: relative;
+            padding-top: 30px;
+        }
+
+        &__item {
+
+            &::before {
+                @include bg-img ();
+                content: '';
+                position: absolute;
+                top: 0;
+                height: 28px;
+                width: 100%;
+
+            }
+            
+
+            &--home::before {
+                background-image: url(../assets/images/vector/home.svg);
+            }
+
+            &--cat::before {
+                background-image: url(../assets/images/vector/category.svg);
+            }
+
+            &--stat::before {
+                background-image: url(../assets/images/vector/star-line.svg);
+            }
+        }
+
+
+    }
+
+}
