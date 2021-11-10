@@ -1,0 +1,19 @@
+@import "./abstracts/variables.scss";
+@import "./abstracts/mixins.scss";
+@import "./abstracts/placeholders.scss";
+
+@import "./components/buttons.scss";
+@import "./components/lincs.scss";
+
+@import "./layout/header.scss";
+@import "./layout/navigation.scss";
+@import "./layout/content.scss";
+@import "./layout/card.scss";
+@import "./layout/question.scss";
+@import "./layout/footer.scss";
+@import "./layout/settings.scss";
+@import "./layout/modal.scss";
+
+body {
+    background-color: blue;
+}

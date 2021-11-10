@@ -27,7 +27,7 @@
         </nav>
         <button class="btn btn-img btn-settings">Settings</button>
     </header>
-    <!-- <main class="main">
+    <!-- <main class="content">
         <button class="btn btn-game">
             угадать художника по картине
         </button>
@@ -36,9 +36,9 @@
         </button>
     </main> -->
 
-    <!-- <main class="main">
-        <h2 class="head head--2">Категории</h2>
-        <div class="main__cards">
+    <!-- <main class="content">
+        <h2 class="content__head">Категории</h2>
+        <div class="content__cards">
             <div class="card">
                 <div class="card__rait">8/10</div>
                 <img class="card__img" src="">
@@ -66,7 +66,7 @@
         </div>
     </main> -->
 
-    <!-- <main class="main">
+    <!-- <main class="content">
         <div class="question question--pictures">
             <div class="question__timer">
                 <input class="question__range" type="range">
@@ -90,7 +90,7 @@
         </div>
     </main> -->
 
-    <main class="main">
+    <main class="content">
         <div class="question question--painter">
             <div class="question__timer">
                 <input class="question__range" type="range">
@@ -105,7 +105,7 @@
                 <button class="btn btn-text" type="submit">сохранить</button>
                 <button class="btn btn-text" type="reset">Сбросить</button>
                 <button class="btn btn-text" type="submit">сохранить</button>
-            </div>>
+            </div>
         </div>
     </main>
 
@@ -120,26 +120,26 @@
             <a href="https://github.com/terra456">terra456</a>
         </div>
     </footer>
-    <div class="overlay"></div>
+    <div class="modal__overlay"></div>
     <div class="settings">
         <div class="settings__header">
             <button class="btn btn-img btn-back">&lsaquo;</button>
-            <h2 class="head head--2">Настройки</h2>
+            <h2 class="settings__head">Настройки</h2>
             <button class="btn btn-img btn-close">&#10006;</button>
         </div>
-        <form>
-            <h3 class="head head--3">Звук</h3>
+        <form class="settings__form">
+            <h3 class="settings__head">Звук</h3>
             <input class="range" type="range">
             <button class="btn-img btn-sound btn-sound--off"></button>
             <button class="btn-img btn-sound btn-sound--on"></button>
-            <h3 class="head head--3">Игра на время</h3>
-            <input id="check" class="checkbox" type="checkbox">
-            <div class="on-off">выкл</div>
-            <label for="check"></label>
-            <div class="on-off">вкл</div>
-            <h3 class="head head--3">Время на ответ</h3>
+            <h3 class="settings__head">Игра на время</h3>
+            <input id="check" class="settings__checkbox" type="checkbox">
+            <div class="settings__on-off">выкл</div>
+            <label class="settings__check-label" for="check"></label>
+            <div class="settings__on-off">вкл</div>
+            <h3 class="settings__head">Время на ответ</h3>
             <button class="btn btn-round btn-min">--</button>
-            <input class="input input-time" type="number" min="5" max="30" step="5">
+            <input class="settings__input settings__input--time" type="number" min="5" max="30" step="5">
             <button class="btn btn-round btn-max">+</button>
             <button class="btn btn-text btn-text--normal" type="reset">Сбросить</button>
             <button class="btn btn-text btn-text--active" type="submit">сохранить</button>
