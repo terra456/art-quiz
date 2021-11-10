@@ -1,0 +1,16 @@
+a {
+    @include text-header ();
+    color: $main-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $second-color;
+        cursor: pointer;
+    }
+
+    &:visited {
+        color: $main-color;
+    }
+}

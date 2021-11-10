@@ -4,6 +4,7 @@
 
 @import "./components/buttons.scss";
 @import "./components/lincs.scss";
+@import "./components/input.scss";
 
 @import "./layout/header.scss";
 @import "./layout/navigation.scss";
@@ -14,6 +15,12 @@
 @import "./layout/settings.scss";
 @import "./layout/modal.scss";
 
-body {
-    background-color: blue;
+* {
+    margin: 0;
+    padding: 0;
 }
+
+body {
+    background-color: $bg-color;
+}
+

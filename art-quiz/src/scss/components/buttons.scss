@@ -1,0 +1,91 @@
+.btn {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btn-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 60px;
+
+    position: relative;
+    width: 251px;
+    height: 62px;
+
+    border: 1.5px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 60px;
+
+    @include text-header ($size: 22px, $line-height: 22px);
+    color: $main-color;
+
+    &:hover,
+    &:focus {
+        background-color: $main-color;
+        color: $dark-color;
+        transition: 500ms;
+    }
+    
+    &:active,
+    &--active {
+        background-color: $second-color;
+        border-color: $second-color;
+        color: $dark-color;
+        transition: 500ms;
+    }
+}
+
+.btn-img {
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 0.7;
+        transition: 500ms;
+    }
+}
+
+.btn-settings {
+    @include bg-img ($x: 34px);
+    background-image: url(../assets/images/vector/settings.svg);
+
+}
+
+.btn-close {
+    @include bg-img;
+    background-image: url(../assets/images/vector/close.svg);
+
+}
+
+.btn-sound--off {
+    @include bg-img ($x: 38px, $y: 28px);
+    background-image: url(../assets/images/vector/mute.svg);
+
+    & .active {
+        opacity: 0.5;
+    }
+}
+
+.btn-sound--on {
+    @include bg-img ($x: 28px, $y: 28px);
+    background-image: url(../assets/images/vector/sound.svg);
+
+    & .active {
+        opacity: 0.5;
+    }
+}
+
+.btn-round {
+    margin: 0;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+
+}

@@ -18,7 +18,7 @@
     $weight: 500,
     $size: 24px,
     $line-height: 28px,
-    $letter-spacing: -0.5px
+    $letter-spacing: 0
 ) {
     font-family: $family;
     font-style: $style;
@@ -30,9 +30,11 @@
 
 @mixin bg-img (
     $position: center,
-    $x: 20px,
+    $x: 28px,
     $y: $x
 ) {
+    width: $x;
+    height: $y;
     background-position: $position;
     background-repeat: no-repeat;
     background-size: $x $y;

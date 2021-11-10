@@ -15,13 +15,13 @@
         <nav class="navigation">
             <ul class="navigation__list">
                 <li class="navigation__item">
-                    <a class="navigation__link">Главная</a>
+                    <a class="navigation__link" href="#">Главная</a>
                 </li>
                 <li class="navigation__item">
-                    <a class="navigation__link">Категории</a>
+                    <a class="navigation__link" href="#">Категории</a>
                 </li>
                 <li class="navigation__item">
-                    <a class="navigation__link">Статистика</a>
+                    <a class="navigation__link" href="#">Статистика</a>
                 </li>
             </ul>
         </nav>
@@ -123,30 +123,33 @@
     <div class="modal__overlay"></div>
     <div class="settings">
         <div class="settings__header">
-            <button class="btn btn-img btn-back">&lsaquo;</button>
             <h2 class="settings__head">Настройки</h2>
-            <button class="btn btn-img btn-close">&#10006;</button>
+            <button class="btn btn-img btn-close"></button>
         </div>
         <form class="settings__form">
             <h3 class="settings__head">Звук</h3>
             <input class="range" type="range">
-            <button class="btn-img btn-sound btn-sound--off"></button>
-            <button class="btn-img btn-sound btn-sound--on"></button>
+            <button class="btn btn-img btn-sound--off"></button>
+            <button class="btn btn-img btn-sound--on"></button>
             <h3 class="settings__head">Игра на время</h3>
-            <input id="check" class="settings__checkbox" type="checkbox">
-            <div class="settings__on-off">выкл</div>
-            <label class="settings__check-label" for="check"></label>
-            <div class="settings__on-off">вкл</div>
+            <div class="settings__check-wrap">
+                <input id="check" class="settings__checkbox" type="checkbox" checked>
+                <div class="settings__off">выкл</div>
+                <label class="settings__check-label" for="check">
+                    <div class="settings__check-circle"></div>
+                </label>
+                <div class="settings__on">вкл</div>
+            </div>
             <h3 class="settings__head">Время на ответ</h3>
-            <button class="btn btn-round btn-min">--</button>
-            <input class="settings__input settings__input--time" type="number" min="5" max="30" step="5">
-            <button class="btn btn-round btn-max">+</button>
+            <button class="btn btn-text btn-round btn-min">--</button>
+            <input class="settings__input settings__input--time" type="number" min="5" max="30" step="5" value="20">
+            <button class="btn btn-text btn-round btn-max">+</button>
             <button class="btn btn-text btn-text--normal" type="reset">Сбросить</button>
             <button class="btn btn-text btn-text--active" type="submit">сохранить</button>
         </form>
     </div>
     <div class="modal">
-        <button class="btn btn-img btn-close">&#10006;</button>
+        <button class="btn btn-img btn-close"></button>
         <img src="">
         <p class="modal__desc">Вы хотите покинуть игру?</p>
         <div class="modal__buttons">

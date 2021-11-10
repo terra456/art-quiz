@@ -1,0 +1,58 @@
+.settings__checkbox {
+    display: none;
+
+    &:checked + .settings__off,
+    &:not(:checked) ~ .settings__on {
+        color: #666666;
+    }
+
+    &:checked ~ .settings__on {
+        color: $main-color;
+    }
+
+    &:not(:checked) + .settings__off {
+        color: $main-color;
+    }
+
+    &:checked ~ .settings__check-label {
+        justify-content: end;
+        transition: 500ms;
+    }
+}
+
+.settings__check-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 48px;
+    height: 24px;
+    padding: 0 2px;
+    background-color: $second-color;
+    border-radius: 12px;
+    transition: 500ms;
+
+    & div {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: $main-color;
+        border-radius: 10px;
+
+    }
+}
+
+.settings__off,
+.settings__on {
+    color: $main-color;
+    @include text-header;
+}
+
+.settings__input--time {
+    width: 80px;
+    box-sizing: border-box;
+    background: transparent;
+    color: $main-color;
+    @include text-header;
+    border: none;
+}
