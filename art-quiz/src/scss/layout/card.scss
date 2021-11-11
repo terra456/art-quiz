@@ -1,0 +1,45 @@
+.card {
+    position: relative;
+    width: 45%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 300px;
+
+    @media screen and (min-width: $tablet) {
+        width: 30%;
+    }
+
+    @media screen and (min-width: $desc) {
+        width: 20%;
+    }
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+        box-shadow: rgba($main-color, 0.5) 0px 0px 20px;
+    }
+
+    &:active {
+        transform: scale(95%);
+        transition: 200ms;
+    }
+
+    &__img {
+        width: 100%;
+    }
+
+    &__rait {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        width: 50%;
+        height: 20%;
+        border-bottom-left-radius: 40px;
+        
+        background-color: $second-color;
+        @include flex ($align: flex-start);
+        padding-top: 10px;
+    }
+}
