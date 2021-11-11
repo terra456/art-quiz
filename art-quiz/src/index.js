@@ -1,4 +1,5 @@
-// import image from './images/lazy.png';
+import './script/main';
+
 import './scss/main.scss';
 
 
