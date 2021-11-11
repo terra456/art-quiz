@@ -90,7 +90,7 @@
         </div>
     </main> -->
 
-    <main class="content">
+    <!-- <main class="content">
         <div class="question question--painter">
             <div class="question__timer">
                 <input class="question__range" type="range">
@@ -107,7 +107,7 @@
                 <button class="btn btn-text" type="submit">сохранить</button>
             </div>
         </div>
-    </main>
+    </main> -->
 
     <footer class="footer">
         <div>
@@ -128,11 +128,13 @@
         </div>
         <form class="settings__form">
             <h3 class="settings__head">Звук</h3>
-            <input class="range" type="range">
-            <button class="btn btn-img btn-sound--off"></button>
-            <button class="btn btn-img btn-sound--on"></button>
+            <div class="settings__wrap">
+                <button class="btn btn-img btn-sound--off"></button>
+                <input class="settings__range" type="range">
+                <button class="btn btn-img btn-sound--on"></button>
+            </div>
             <h3 class="settings__head">Игра на время</h3>
-            <div class="settings__check-wrap">
+            <div class="settings__wrap">
                 <input id="check" class="settings__checkbox" type="checkbox" checked>
                 <div class="settings__off">выкл</div>
                 <label class="settings__check-label" for="check">
@@ -141,11 +143,15 @@
                 <div class="settings__on">вкл</div>
             </div>
             <h3 class="settings__head">Время на ответ</h3>
-            <button class="btn btn-text btn-round btn-min">--</button>
-            <input class="settings__input settings__input--time" type="number" min="5" max="30" step="5" value="20">
-            <button class="btn btn-text btn-round btn-max">+</button>
-            <button class="btn btn-text btn-text--normal" type="reset">Сбросить</button>
-            <button class="btn btn-text btn-text--active" type="submit">сохранить</button>
+            <div class="settings__wrap">
+                <button class="btn btn-text btn-round btn-min">--</button>
+                <input class="settings__input settings__input--time" type="number" min="5" max="30" step="5" value="20">
+                <button class="btn btn-text btn-round btn-max">+</button>
+            </div>
+            <div class="settings__wrap">
+                <button class="btn btn-text btn-text--normal" type="reset">Сбросить</button>
+                <button class="btn btn-text btn-text--active" type="submit">сохранить</button>
+            </div>
         </form>
     </div>
     <div class="modal">

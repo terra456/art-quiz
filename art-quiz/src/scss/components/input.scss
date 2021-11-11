@@ -54,5 +54,6 @@
     background: transparent;
     color: $main-color;
     @include text-header;
+    text-align: center;
     border: none;
 }
