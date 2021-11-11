@@ -27,14 +27,14 @@
         </nav>
         <button class="btn btn-img btn-settings">Settings</button>
     </header>
-    <!-- <main class="content">
+    <main class="content">
         <button class="btn btn-game">
             угадать художника по картине
         </button>
         <button class="btn btn-game">
             угадать картину по имени её автора
         </button>
-    </main> -->
+    </main>
 
     <!-- <main class="content">
         <h2 class="content__head">Категории</h2>
@@ -120,8 +120,8 @@
             <a href="https://github.com/terra456">terra456</a>
         </div>
     </footer>
-    <div class="modal__overlay"></div>
-    <div class="settings">
+    <div class="modal__overlay display-none"></div>
+    <div class="settings display-none">
         <div class="settings__header">
             <h2 class="settings__head">Настройки</h2>
             <button class="btn btn-img btn-close"></button>
@@ -154,13 +154,15 @@
             </div>
         </form>
     </div>
-    <div class="modal">
-        <button class="btn btn-img btn-close"></button>
-        <img src="">
-        <p class="modal__desc">Вы хотите покинуть игру?</p>
-        <div class="modal__buttons">
-            <button class="btn btn-text btn-text--normal">Закрыть</button>
-            <button class="btn btn-text btn-text--active">Да</button>
+    <div class="modal__wrapper display-none">
+        <div class="modal">
+            <button class="btn btn-img btn-close"></button>
+            <img src="./assets/images/vector/cup.svg">
+            <p class="modal__desc">Вы хотите покинуть игру?</p>
+            <div class="modal__buttons">
+                <button class="btn btn-text btn-text--normal">Закрыть</button>
+                <button class="btn btn-text btn-text--active">Да</button>
+            </div>
         </div>
     </div>
 </body>
