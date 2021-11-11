@@ -1,3 +1,5 @@
 .header {
     @include flex ($justify: space-between);
+    margin-bottom: 4vh;
 }
+
