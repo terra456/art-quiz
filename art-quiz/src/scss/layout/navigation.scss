@@ -1,7 +1,8 @@
 .navigation {
     @include flex ($justify: space-around);
+    width: 100%;
 
-    @media screen and (max-width: $tablet) {        
+    @media screen and (max-width: $tablet) {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -20,7 +21,6 @@
 
         &__link {
             @include text-header ($size: 14px, $line-height: 18px);
-
         }
 
         &__item {
@@ -37,10 +37,8 @@
                 top: 0;
                 height: 28px;
                 width: 100%;
-
             }
             
-
             &--home::before {
                 background-image: url(../assets/images/vector/home.svg);
             }
@@ -53,8 +51,34 @@
                 background-image: url(../assets/images/vector/star-line.svg);
             }
         }
+    }
+
+    &__list {
+        @include flex ($justify: space-around);
+        width: 100%;
+        max-width: 500px;
+
+        &:first-child {
+            margin-left: auto;
+            flex-grow: 2;
+        }
+
+        &:last-child {
+            margin-right: auto;
+            flex-grow: 2;
+        }
+    }
 
 
+
+    &__link {
+        @include text-header ($size: 22px, $line-height: 18px);
+    }
+
+    @media screen and (max-width: $desc) {
+        &__link {
+            font-size: 18px;
+        }
     }
 
 }
