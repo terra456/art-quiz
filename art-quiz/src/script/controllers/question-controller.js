@@ -1,7 +1,7 @@
 import shuffleArray from '../data/shuffle-array';
 import QuestionImageView from '../views/question-image-view';
 import QuestionPainterView from '../views/question-painter-view';
-import CategoryController from './category-controller';
+import ModalView from '../views/modal-view';
 
 class QuestionController {
     constructor (type, roundNumber, data) {
@@ -36,7 +36,7 @@ class QuestionController {
         falseAnswers.push(rightAnswer);
 
         const questionView = new QuestionImageView();
-        questionView.render(questionDesc, falseAnswers);
+        questionView.render(questionDesc, shuffleArray(falseAnswers));
         this.answerImageHandler(document.querySelectorAll('.btn-answer'), rightAnswer);
     }
 
@@ -48,7 +48,7 @@ class QuestionController {
         falseAnswers.push(rightAnswer);
 
         const questionView = new QuestionPainterView();
-        questionView.render(questionDesc, falseAnswers);
+        questionView.render(questionDesc, shuffleArray(falseAnswers));
         this.answerPainterHandler(document.querySelectorAll('.question__answer'), rightAnswer);
     }
 
@@ -61,8 +61,7 @@ class QuestionController {
                     this.generateImageQuestion();
                 } else {
                     console.log(this.rights);
-                    this.generateResult();
-                    
+                    this.generateResult();                    
                 }
             })
         })
@@ -77,8 +76,7 @@ class QuestionController {
                     this.generatePainterQuestion();
                 } else {
                     console.log(this.rights);
-                    this.generateResult();
-                    
+                    this.generateResult();                    
                 }
             })
         })
@@ -87,7 +85,6 @@ class QuestionController {
     isAnswerRight(answer, rightAnswer) {
         this.questionNumber++;
         if (answer == rightAnswer) {
-            //ToDo добавить запись данных в локалсторадж
             this.rights++;
             return true;
         } else {
@@ -97,6 +94,16 @@ class QuestionController {
     }
 
     generateResult = () => {
+        const modalV = new ModalView();
+        if (this.rights == 10) {
+            modalV.renderWin();
+        } else if (this.rights >= 8) {
+            modalV.renderResult(this.rights);
+        } else {
+            modalV.renderGameOver();
+        }
+
+        //ToDo добавить запись данных в локалсторадж
         console.log(this.roundNumber + 'right' + this.rights);
         this.roundNumber++;
         this.questionNumber = 0;
