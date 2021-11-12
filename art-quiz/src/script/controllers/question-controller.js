@@ -1,15 +1,21 @@
 import shuffleArray from '../data/shuffle-array';
 import QuestionImageView from '../views/question-image-view';
 import QuestionPainterView from '../views/question-painter-view';
+import CategoryController from './category-controller';
 
 class QuestionController {
-    constructor (type, roundNumber, data, answers) {
+    constructor (type, roundNumber, data) {
         this.typeOfGame = type;
         this.roundNumber = roundNumber;
-        this.data = data;
-        this.answers = answers;
+        this.dataAll = data;
+        this.data = this.dataAll[roundNumber];
+        this.answers = [];
         this.questionNumber = 0;
         this.rights = 0;
+    }
+
+    setAnswers = (arr) => {
+        this.answers = arr;
     }
 
     generateAnswers = (rightAnswer) => {
@@ -18,9 +24,8 @@ class QuestionController {
             return arr;
         } else {
             console.log('В ответах есть 2 правильных');
-            this.generateAnswers(rightAnswer);
+            return this.generateAnswers(rightAnswer);
         }
-        console.log(arr);
     }
 
     generateImageQuestion = () => {
@@ -44,6 +49,7 @@ class QuestionController {
 
         const questionView = new QuestionPainterView();
         questionView.render(questionDesc, falseAnswers);
+        this.answerPainterHandler(document.querySelectorAll('.question__answer'), rightAnswer);
     }
 
     answerImageHandler(nodeL, rightAnswer) {
@@ -55,7 +61,24 @@ class QuestionController {
                     this.generateImageQuestion();
                 } else {
                     console.log(this.rights);
-                    // generateResult();
+                    this.generateResult();
+                    
+                }
+            })
+        })
+    }
+
+    answerPainterHandler(nodeL, rightAnswer) {
+        nodeL.forEach((el) => {
+            el.addEventListener('click', (evt) => {
+                evt.preventDefault();
+                this.isAnswerRight((el.firstChild.src).split('/').pop().split('.')[0], rightAnswer);
+                if (this.questionNumber < 10) {
+                    this.generatePainterQuestion();
+                } else {
+                    console.log(this.rights);
+                    this.generateResult();
+                    
                 }
             })
         })
@@ -65,12 +88,23 @@ class QuestionController {
         this.questionNumber++;
         if (answer == rightAnswer) {
             //ToDo добавить запись данных в локалсторадж
-            console.log('right', answer);
             this.rights++;
             return true;
         } else {
             console.log('Error!!!!!!!!!!')
             return false;
+        }
+    }
+
+    generateResult = () => {
+        console.log(this.roundNumber + 'right' + this.rights);
+        this.roundNumber++;
+        this.questionNumber = 0;
+        this.rights = 0;
+        if (this.typeOfGame == 'painter') {
+            this.generatePainterQuestion();
+        } else if (this.typeOfGame == 'image') {
+            this.generateImageQuestion();
         }
     }
 

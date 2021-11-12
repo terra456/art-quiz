@@ -9,12 +9,14 @@ class CategoryController {
         this.roundsData = [];
         this.imgS = Array.from(images.map((el) => el.imageNum));
         this.painters = new Set();
+        this.roundNumber = 0;
+        
     }
 
     getPainters = () => {
         for (let el of images) {
             this.painters.add(el.author);
-        }        
+        }
     }
 
     getCategoryList = () => {
@@ -33,25 +35,29 @@ class CategoryController {
         this.cardsClickHandler();
     }
 
+    playGame = () => {
+        const questions = new QuestionController(this.name, this.roundNumber, this.roundsData);
+        if (this.name == 'painter') {
+            questions.setAnswers(this.imgS);
+            questions.generatePainterQuestion();
+        } else if (this.name == 'image') {
+            this.getPainters();
+            questions.setAnswers(Array.from(this.painters));
+            questions.generateImageQuestion();
+        }
+        this.roundNumber++;
+    }
+
     cardsClickHandler = () => {
         const card = document.querySelectorAll('.card');
         card.forEach((el) => {
             el.addEventListener('click', (evt) => {
                 evt.preventDefault();
-                if (this.name == 'painter') {
-                    const questions = new QuestionController(this.name, el.id, this.roundsData[el.id], this.imgS);
-                    questions.generatePainterQuestion();
-                } else if (this.name == 'image') {
-                    this.getPainters();
-                    const questions = new QuestionController(this.name, el.id, this.roundsData[el.id], Array.from(this.painters));
-                    questions.generateImageQuestion();
-                }
-                console.log(this.roundsData[el.id]);
+                this.roundNumber = el.id;
+                this.playGame();
             })
         });
     }
-
-
 
 }
 
