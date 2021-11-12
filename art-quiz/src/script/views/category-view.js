@@ -22,7 +22,7 @@ class CategoryView {
                             <div class="card__rait">8/10</div>
                             <img class="card__img" src="./assets/images/mini/${images[round * 10].imageNum}.jpg">
                         `;
-            cardsDiv.prepend(card);
+            cardsDiv.appendChild(card);
         }
 
     } 
