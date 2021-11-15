@@ -1,5 +1,5 @@
 class QuestionImageView {
-    render (question, answers) {
+    render (question, answers, qN, rN) {
         const content = this.container = document.querySelector('.content');
         content.innerHTML = `
             <div class="question question--painter">
@@ -8,7 +8,8 @@ class QuestionImageView {
                     <input class="question__range" type="range">
                     <span class="question__time">00:05</span>
                 </div>
-                <p class="question__desc">Кто автор этой картины?</p>
+                <h2 class="question__head">Раунд ${rN + 1}</h2>
+                <p class="question__desc">${qN + 1} Кто автор этой картины?</p>
                 <div class="question__big-img">
                     <img src="./assets/images/full/${question}full.jpg">
                 </div>

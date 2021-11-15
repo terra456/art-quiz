@@ -53,7 +53,7 @@ class CategoryController {
         card.forEach((el) => {
             el.addEventListener('click', (evt) => {
                 evt.preventDefault();
-                this.roundNumber = el.id;
+                this.roundNumber = Number(el.id);
                 this.playGame();
             })
         });

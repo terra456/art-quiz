@@ -33,6 +33,14 @@
         width: 60%;
     }
 
+    &__head {
+        max-width: 1024px;
+        padding-bottom: 10px;
+        @include text-header($size: 24px);
+        color: $main-color;
+        text-align: center;
+    }
+
     &__desc {
         max-width: 1024px;
         padding-bottom: 40px;
