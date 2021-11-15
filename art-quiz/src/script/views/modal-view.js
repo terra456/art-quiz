@@ -46,8 +46,10 @@ class ModalView {
     close = () => {
         this.modal.classList.add('display-none');
         this.overlay.classList.add('display-none');
-        document.querySelector('.btn-text--next').onclick = null;
-        document.querySelector('.btn-text--repeat').onclick = null;       
+        this.modal.querySelector('.modal__img-wrapper').classList.remove('wrong-answer');
+        this.modal.querySelector('.modal__img-wrapper').classList.remove('right-answer');
+        this.modal.querySelector('.btn-text--next').onclick = null;
+        this.modal.querySelector('.btn-text--repeat').onclick = null;       
     }
 }
 

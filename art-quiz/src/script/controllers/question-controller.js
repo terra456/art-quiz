@@ -94,11 +94,11 @@ class QuestionController {
         this.questionNumber++;
         if (answer == rightAnswer) {
             this.rights++;
-            img.classList.remove('wrong-answer');
+            
             img.classList.add('right-answer');
             return true;
         } else {
-            img.classList.remove('right-answer');
+            
             img.classList.add('wrong-answer');
             console.log('Error!!!!!!!!!!')
             return false;
