@@ -1,6 +1,7 @@
 import images from '../data/images';
 import CategoryView from '../views/category-view';
 import QuestionController from './question-controller';
+import LocalStorageModel from '../models/local-storage-model';
 
 class CategoryController {
     constructor(name) {
@@ -30,8 +31,10 @@ class CategoryController {
                 // console.log(catList);
             }
         }
+        const lsM = new LocalStorageModel();
+        const res = lsM.getLScategories(this.name);
         const catV = new CategoryView(this.name);
-        catV.render(this.rounds);
+        catV.render(this.rounds, res);
         this.cardsClickHandler();
     }
 

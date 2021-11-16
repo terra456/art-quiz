@@ -5,7 +5,8 @@ class CategoryView {
         this.name = name;
     }
 
-    render = (arrRounds) => {
+    render = (arrRounds, results) => {
+        console.log(results);
         const conteiner = document.querySelector('.content');
         conteiner.innerHTML = `
             <h2 class="content__head">Категория ${this.name}</h2>
@@ -19,13 +20,18 @@ class CategoryView {
             card.id = round;
             card.classList.add('card');
             card.innerHTML = `
-                            <div class="card__rait">8/10</div>
-                            <img class="card__img" src="./assets/images/mini/${images[round * 10].imageNum}.jpg">
-                        `;
+            <div class="card__rait"></div>
+            <img class="card__img" src="./assets/images/mini/${images[round * 10].imageNum}.jpg">
+            `;
+            
+            if (results[round]) {
+                card.firstElementChild.innerHTML = `${results[round]} / 10`;
+                card.classList.add('card--play');
+            }
+            
             cardsDiv.appendChild(card);
         }
-
-    } 
+    }
 }
 
 export default CategoryView;

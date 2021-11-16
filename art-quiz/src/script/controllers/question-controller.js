@@ -2,6 +2,7 @@ import shuffleArray from '../data/shuffle-array';
 import QuestionImageView from '../views/question-image-view';
 import QuestionPainterView from '../views/question-painter-view';
 import ModalView from '../views/modal-view';
+import LocalStorageModel from '../models/local-storage-model'
 
 class QuestionController {
     constructor (type, roundNumber, arr) {
@@ -13,6 +14,7 @@ class QuestionController {
         this.questionNumber = 0;
         this.rights = 0;
         this.modal = new ModalView();
+        this.lsModel = new LocalStorageModel();
     }
 
     setAnswers = (arr) => {
@@ -65,7 +67,10 @@ class QuestionController {
         nodeL.forEach((el) => {
             el.addEventListener('click', (evt) => {
                 evt.preventDefault();
-                this.isAnswerRight(el.textContent, rightAnswer);
+                const res = this.isAnswerRight(el.textContent, rightAnswer);
+                //set LS -1, because it change in isAnswerRight
+                this.lsModel.setLSpicture(this.data[this.questionNumber - 1].imageNum, res);
+
                 if (this.questionNumber < 10) {
                     this.generateImageQuestion();
                 }
@@ -91,6 +96,7 @@ class QuestionController {
 
         const img = document.querySelector('.modal__img-wrapper');
         document.querySelector('.btn-text--next').onclick = this.questionModalHandler;
+
         this.questionNumber++;
         if (answer == rightAnswer) {
             this.rights++;
@@ -100,7 +106,7 @@ class QuestionController {
         } else {
             
             img.classList.add('wrong-answer');
-            console.log('Error!!!!!!!!!!')
+            console.log('Error!!!!!!!!!!');
             return false;
         }
     }
@@ -115,11 +121,13 @@ class QuestionController {
             } else {
                 this.modal.renderResult('vector/cup-broke.svg', this.rights + ' / 10', 'Cыграть снова?', false);
             }
-            this.questionNumber = 0;
-            this.rights = 0;
+            
         }, 100);
 
-        //ToDo добавить запись данных в локалсторадж
+        //запись данных в локалсторадж
+        
+        this.lsModel.setLScategorie(this.typeOfGame, this.roundNumber, this.rights);
+
         console.log(this.roundNumber + 'right' + this.rights);
         
         
@@ -127,6 +135,8 @@ class QuestionController {
         document.querySelector('.btn-text--repeat').onclick = this.resultRepeatHandler;
         
         // this.resultModalHandler();
+        this.questionNumber = 0;
+        this.rights = 0;
     }
 
     resultNextHandler = () => {
