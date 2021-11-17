@@ -4,18 +4,23 @@
     width: 100vw;
     height: 87vh;
     top: 0;
-    left: 0;
+    right: 0;
     z-index: 5;
     box-sizing: border-box;
     padding: 4vw 4vh;
-    background-color: $bg-color;
+    background-color: #333333;
+
+    animation: show-settings 1000ms linear;
+
+    &.hide {
+        animation: hide-settings 1000ms linear;
+    }
 
     & .btn-close {
         position: absolute;
         top: 4vh;
         right: 4vw;
         z-index: 6;
-
     }
 
     &__header {
@@ -73,4 +78,26 @@
         border-bottom-left-radius: 20px;
     }
 
+}
+
+@keyframes show-settings {
+    from {
+        top: -100vh;
+        right: -100vw;
+    }
+    to {
+        top: 0;
+        right: 0;
+    }
+}
+
+@keyframes hide-settings {
+    from {
+        top: 0;
+        right: 0;
+    }
+    to {
+        top: -100vh;
+        right: -100vw;
+    }
 }

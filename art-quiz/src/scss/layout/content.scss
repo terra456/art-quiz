@@ -3,6 +3,10 @@
     width: 100%;
     @include flex($direction: column);
 
+    &.disappiar {
+        animation: disappiar-center 500ms linear;
+    }
+
     &__home {
         @include flex($direction: column);
         gap: 40px;
@@ -26,5 +30,14 @@
         @media screen and (min-width: $desc) {
             gap: 40px;
         }
+    }
+}
+
+@keyframes disappiar-center {
+    from {
+        transform: scale(100%);
+    }
+    to {
+        transform: scale(0);
     }
 }

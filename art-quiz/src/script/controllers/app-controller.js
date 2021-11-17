@@ -16,6 +16,8 @@ class AppController {
         document.querySelector('.navigation__item--home').onclick = this.btnHomeHandler;
         document.querySelector('.navigation__item--cat').onclick = this.btnCategoryHandler;
         document.querySelector('.navigation__item--stat').onclick = this.btnStatHandler;
+        document.querySelector('.btn-settings').onclick = this.btnSettingsHandler;
+        document.querySelector('.settings__close').onclick = this.btnSettingsCloseHandler;
     }
    
 
@@ -32,6 +34,19 @@ class AppController {
     btnStatHandler = () => {
         const statController = new StatController();
         statController.statPicture();
+    }
+
+    btnSettingsHandler = () => {
+        document.querySelector('.settings').classList.remove('display-none');
+    }
+
+    btnSettingsCloseHandler = () => {
+        const settings = document.querySelector('.settings');
+        settings.classList.add('hide');
+        setTimeout(() => {
+            settings.classList.remove('hide');
+            settings.classList.add('display-none');
+        }, 1000);
     }
 
 }

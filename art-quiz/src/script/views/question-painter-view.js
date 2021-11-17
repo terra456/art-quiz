@@ -4,7 +4,7 @@ class QuestionPainterView {
         content.innerHTML = `
             <div class="question question--pictures">
                 <div class="question__timer">
-                    <button class="btn btn-img btn-close"></button>
+                    <button class="btn question__close btn-img btn-close"></button>
                     <input class="question__range" type="range">
                     <span class="question__time">00:25</span>
                 </div>

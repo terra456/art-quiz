@@ -22,6 +22,7 @@ class ModalView {
         }
 
         this.modal.classList.remove('display-none');
+        this.modal.classList.remove('modal-none');
         this.overlay.classList.remove('display-none');
         this.overlay.onclick = this.close;
         this.modal.querySelector('.btn-close-black').onclick = this.close;
@@ -29,7 +30,8 @@ class ModalView {
 
     close = () => {
         console.log('close');
-        this.modal.classList.add('display-none');
+        this.modal.classList.add('modal-none');
+        setTimeout(() => {this.modal.classList.add('display-none')}, 450);
         this.overlay.classList.add('display-none');
         this.modal.querySelector('.modal__img-wrapper').classList.remove('wrong-answer');
         this.modal.querySelector('.modal__img-wrapper').classList.remove('right-answer');

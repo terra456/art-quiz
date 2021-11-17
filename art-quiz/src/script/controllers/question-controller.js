@@ -2,7 +2,8 @@ import shuffleArray from '../data/shuffle-array';
 import QuestionImageView from '../views/question-image-view';
 import QuestionPainterView from '../views/question-painter-view';
 import ModalView from '../views/modal-view';
-import LocalStorageModel from '../models/local-storage-model'
+import LocalStorageModel from '../models/local-storage-model';
+import CategoryController from './category-controller';
 
 class QuestionController {
     constructor (type, roundNumber, arr) {
@@ -49,6 +50,7 @@ class QuestionController {
         const questionView = new QuestionImageView();
         questionView.render(questionDesc, shuffleArray(falseAnswers), this.questionNumber, this.roundNumber);
         this.answerImageHandler(document.querySelectorAll('.btn-answer'), rightAnswer);
+        document.querySelector('.question__close').onclick = this.questionCloseHandler;
     }
 
     generatePainterQuestion = () => {
@@ -61,6 +63,7 @@ class QuestionController {
         const questionView = new QuestionPainterView();
         questionView.render(questionDesc, shuffleArray(falseAnswers), this.questionNumber, this.roundNumber);
         this.answerPainterHandler(document.querySelectorAll('.question__answer'), rightAnswer);
+        document.querySelector('.question__close').onclick = this.questionCloseHandler;
     }
 
     answerImageHandler = (nodeL, rightAnswer) => {
@@ -122,7 +125,7 @@ class QuestionController {
                 this.modal.renderResult('vector/cup-broke.svg', this.rights + ' / 10', 'Cыграть снова?', false);
             }
             this.rights = 0;
-        }, 100);
+        }, 500);
 
         //запись данных в локалсторадж
         
@@ -157,6 +160,16 @@ class QuestionController {
         if (this.questionNumber === 10) {
                 this.generateResult();
         }
+    }
+
+    questionCloseHandler = () => {
+        const content = document.querySelector('.content');
+        content.classList.add('disappiar');
+        setTimeout(() => {
+            content.classList.remove('disappiar');
+            const catCont = new CategoryController(this.typeOfGame);
+            catCont.getCategoryList();
+        }, 500);
     }
 
 }
