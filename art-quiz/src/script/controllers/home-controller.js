@@ -1,9 +1,16 @@
 import CategoryView from '../views/category-view';
 import CategoryController from './category-controller';
+import HomeView from '../views/home-view'
 
 class HomeController {
     constructor () {
+        this.main = document.querySelector('.content');
+        this.homeView = new HomeView();
+    }
 
+    showHome = () => {
+        this.homeView.render(this.main);
+        this.buttonsHandler();
     }
 
     buttonsHandler = () => {
@@ -12,8 +19,8 @@ class HomeController {
             el.addEventListener('click', (evt) => {
                 evt.preventDefault();
                 console.log(el.id);
-                const catCont = new CategoryController(el.id);
-                catCont.getCategoryList();
+                const catC = new CategoryController(el.id);
+                catC.getCategoryList();
             })
         })
     }
@@ -22,6 +29,8 @@ class HomeController {
         const catView = new CategoryView(catName);
         catView.render();
     }
+
+
 
 }
 

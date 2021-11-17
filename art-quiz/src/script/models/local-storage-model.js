@@ -1,8 +1,43 @@
 class LocalStorageModel {
     getLScategories = (key) => {
-        const lsData = JSON.parse(localStorage.getItem(key))
-        // const lsData = localStorage.getItem(key);
-        return lsData;
+        if (localStorage.getItem(key)) {
+            console.log(key);
+            const lsData = JSON.parse(localStorage.getItem(key));
+            return lsData;       
+        } else {
+            return;
+        }
+    }
+
+    getLSsettings = (field) => {
+        if (localStorage.user) {
+            return localStorage.user[field];
+        } else {
+            return false;
+        }
+    }
+
+    setLSparam = (key, value) => {
+        localStorage[key] = value;
+    }
+
+    setLSsettings = (field, value) => {
+        if (!localStorage.user) {
+            let res = {};
+            res[field] = value;
+            localStorage.setItem('user', JSON.stringify(res));
+        } else {
+            let res = this.getLScategories('user');
+            console.log(res);
+            if (res) {
+                res[field] = value;
+            } else {
+                res = {};
+                res[field] = value;
+            }
+            let jsData = JSON.stringify(res);
+            localStorage.user = jsData;
+        }
     }
 
     setLScategorie = (key, roundN, right) => {
@@ -32,6 +67,7 @@ class LocalStorageModel {
             res = {};
             res[N] = answer;
         }
+
         let jsData = JSON.stringify(res);
         console.log(jsData);
         localStorage['pictures'] = jsData;

@@ -24,9 +24,11 @@ class CategoryView {
             <img class="card__img" src="./assets/images/mini/${images[round * 10].imageNum}.jpg">
             `;
             
-            if (results[round]) {
+            if (results && results[round]) {
                 card.firstElementChild.innerHTML = `${results[round]} / 10`;
                 card.classList.add('card--play');
+            } else {
+                console.log('no results');
             }
             
             cardsDiv.appendChild(card);

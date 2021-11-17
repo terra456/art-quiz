@@ -121,7 +121,7 @@ class QuestionController {
             } else {
                 this.modal.renderResult('vector/cup-broke.svg', this.rights + ' / 10', 'Cыграть снова?', false);
             }
-            
+            this.rights = 0;
         }, 100);
 
         //запись данных в локалсторадж
@@ -136,7 +136,7 @@ class QuestionController {
         
         // this.resultModalHandler();
         this.questionNumber = 0;
-        this.rights = 0;
+        
     }
 
     resultNextHandler = () => {
