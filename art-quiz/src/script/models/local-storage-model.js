@@ -17,6 +17,10 @@ class LocalStorageModel {
         }
     }
 
+    getLSparam = (key) => {
+        return localStorage[key];
+    }
+
     setLSparam = (key, value) => {
         localStorage[key] = value;
     }
