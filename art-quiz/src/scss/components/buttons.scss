@@ -60,7 +60,11 @@
 .btn-close {
     @include bg-img;
     background-image: url(../assets/images/vector/close.svg);
+}
 
+.btn-close-black {
+    @include bg-img;
+    background-image: url(../assets/images/vector/close-black.svg);
 }
 
 .btn-sound--off {

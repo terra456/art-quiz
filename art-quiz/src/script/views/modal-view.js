@@ -5,51 +5,38 @@ class ModalView {
 
     }
 
-    // renderGameOver = () => {
-    //     this.modal.querySelector('img').src = './assets/images/vector/cup-broke.svg';
-    //     this.modal.querySelector('.modal__head').textContent = 'Game Over';
-    //     this.modal.querySelector('.modal__desc').textContent = 'Cыграть снова?';
-    //     this.modal.classList.remove('display-none');
-    //     this.overlay.classList.remove('display-none');
-    // }
-
-    // renderWin = () => {
-    //     this.modal.firstChild.src('./assets/images/vector/group-stars.svg');
-    //     this.modal.querySelector('.modal__head').textContent = 'Велликоллепно!';
-    //     this.modal.querySelector('.modal__desc').textContent = 'Наши поздравления!';
-    //     this.modal.querySelector('.btn-text--repeat').remove();
-    //     this.modal.classList.remove('display-none');
-    //     this.overlay.classList.remove('display-none');
-    // }
-
-    // renderResultA = (res) => {
-    //     this.modal.firstChild.src('./assets/images/vector/cup-broke.svg');
-    //     this.modal.querySelector('.modal__head').textContent = `${res} / 10`;
-    //     this.modal.querySelector('.modal__desc').textContent = 'Поздравляем!';
-    //     this.modal.classList.remove('display-none');
-    //     this.overlay.classList.remove('display-none');
-    // }
-
-    renderResult = (img, res, text, noBtn) => {
+    renderResult = (img, res, text, noBtn, no) => {
         this.modal.querySelector('img').src = `./assets/images/${img}`;
         this.modal.querySelector('.modal__head').textContent = res;
         this.modal.querySelector('.modal__desc').textContent = text;
         if ( noBtn ) {
             this.modal.querySelector('.btn-text--repeat').classList.add('display-none');
+            this.modal.querySelector('.btn-text--next').classList.remove('display-none');
         } else {
             this.modal.querySelector('.btn-text--repeat').classList.remove('display-none');
+            this.modal.querySelector('.btn-text--next').classList.remove('display-none');
         }
+        if (no) {
+            this.modal.querySelector('.btn-text--repeat').classList.add('display-none');
+            this.modal.querySelector('.btn-text--next').classList.add('display-none');
+        }
+
         this.modal.classList.remove('display-none');
         this.overlay.classList.remove('display-none');
+        this.overlay.onclick = this.close;
+        this.modal.querySelector('.btn-close-black').onclick = this.close;
     }
 
     close = () => {
+        console.log('close');
         this.modal.classList.add('display-none');
         this.overlay.classList.add('display-none');
         this.modal.querySelector('.modal__img-wrapper').classList.remove('wrong-answer');
         this.modal.querySelector('.modal__img-wrapper').classList.remove('right-answer');
         this.modal.querySelector('.btn-text--next').onclick = null;
-        this.modal.querySelector('.btn-text--repeat').onclick = null;       
+        this.modal.querySelector('.btn-text--repeat').onclick = null;     
+        this.modal.querySelector('.btn-close-black').onclick = null;
+        this.overlay.onclick = null;
     }
 }
 
