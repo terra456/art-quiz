@@ -1,6 +1,7 @@
 .navigation {
     @include flex ($justify: space-around);
-    width: 100%;
+    flex-grow: 3;
+    // width: 100%;
 
     @media screen and (max-width: $tablet) {
         position: absolute;
@@ -16,6 +17,7 @@
 
         &__list {
             @include flex ($justify: space-around);
+            gap: 20px;
             width: 80%;
         }
 
@@ -57,6 +59,7 @@
         @include flex ($justify: space-around);
         width: 100%;
         max-width: 500px;
+        gap: 20px;
 
         &:first-child {
             margin-left: auto;

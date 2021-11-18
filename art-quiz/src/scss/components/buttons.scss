@@ -52,9 +52,29 @@
 }
 
 .btn-settings {
+    margin-left: 40px;
+    box-sizing: border-box;
     @include bg-img ($x: 34px);
     background-image: url(../assets/images/vector/settings.svg);
+}
 
+.btn-login {
+    width: 34px;
+    margin-left: 20px;
+    @include bg-img ($x: 34px);
+    background-image: url(../assets/images/vector/user-icon.svg);
+}
+
+.btn-login-inactive {
+    width: 40px;
+    @include bg-img ($x: 40px, $y: 34px);
+    background-image: url(../assets/images/vector/user-inactive.svg);
+}
+
+.btn-logout {
+    width: 34px;
+    @include bg-img ($x: 34px);
+    background-image: url(../assets/images/vector/exit-icon.svg);
 }
 
 .btn-close {

@@ -35,25 +35,26 @@ class StatPictureView {
             const card = document.createElement('div');
             card.id = picture.imageNum;
             card.classList.add('card');
+            // card.classList.add('card--statistic');
             card.innerHTML = `
-                            <div class="card__info">
-                                <p class="card__author">${picture.author}</p>
-                                <p class="card__name">${picture.name}</p>
-                                <p class="card__year">${picture.year}</p>
-                            </div>
+                            
                             <img class="card__img" src="./assets/images/mini/${picture.imageNum}.jpg">
             `;
-            if (results && results[picture.imageNum]) {
-                card.classList.add('card--play');
+            if (results && results[picture.imageNum] === true) {
+                console.log(results[picture.imageNum], picture.imageNum);
+                card.classList.add('card--good');
+            } else if (results && results[picture.imageNum] === false) {
+                console.log(results[picture.imageNum], picture.imageNum);
+                card.classList.add('card--bad');
             }
             content.appendChild(card);
         }
     }
 
-    renderResult = (pic, art) => {
-        console.log(pic, art);
+    renderResult = (pic, art, p, a) => {
         const content = document.querySelector('.content__cards');
-        content.innerHTML = `<p class="content__desk"><p>
+        
+        content.innerHTML = `
                             <table class="content__table">
                                 <thead>
                                     <th>Номер раунда</th>
@@ -63,20 +64,20 @@ class StatPictureView {
                                 </thead>
                                 <tbody></tbody>
                                 <tfoot>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Среднее значение</th>
+                                    <th>${p}</th>
+                                    <th>${a}</th>
                                     <th></th>
                                 </tfoot>
                             </table>`;
 
         const table = document.querySelector('tbody');
-        for (let i = 0; i <= 120; i++) {
+        for (let i = 0; i < 24; i++) {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<th>Раунд № ${ i + 1 }</th>
-                            <th>${pic[i]}</th>
-                            <th>${art[i]}</th>
-                            <th><img src="./assets/images/vector/${(pic[i] >= 1 && art[i] >= 1) ? 'check-true' : 'check-false'}.svg"></th>
+            tr.innerHTML = `<td>Раунд № ${ i + 1 }</td>
+                            <td>${pic[i] ? pic[i] : '&ndash;'}</td>
+                            <td>${art[i] ? art[i] : '&ndash;'}</td>
+                            <td><img src="./assets/images/vector/${(pic[i] >= 1 && art[i] >= 1) ? 'check-true' : 'check-false'}.svg"></td>
                             `;
             table.appendChild(tr);
         }

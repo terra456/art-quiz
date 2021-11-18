@@ -25,10 +25,10 @@ class CategoryView {
             `;
             
             if (results && results[round]) {
-                card.firstElementChild.innerHTML = `${results[round]} / 10`;
+                card.firstElementChild.innerHTML = `<span>Раунд ${round + 1}</span><span>${results[round]} / 10</span>`;
                 card.classList.add('card--play');
             } else {
-                console.log('no results');
+                card.firstElementChild.innerHTML = `<span>Раунд ${round + 1}</span>`;
             }
             
             cardsDiv.appendChild(card);

@@ -2,9 +2,8 @@
     position: relative;
     width: 45%;
     box-sizing: border-box;
-    border-radius: 20px;
-    overflow: hidden;
     max-width: 300px;
+      
 
     @media screen and (min-width: $tablet) {
         width: 30%;
@@ -14,8 +13,8 @@
         width: 20%;
     }
 
-    &:hover,
-    &:focus {
+    &:hover img,
+    &:focus img {
         cursor: pointer;
         box-shadow: rgba($main-color, 0.5) 0px 0px 20px;
     }
@@ -25,21 +24,53 @@
         transition: 200ms;
     }
 
+    &:hover .card__rait,
+    &:focus .card__rait {
+        color: $second-color;
+    }
+
     &__img {
         width: 100%;
+        border-radius: 20px;
+        filter: grayscale(100%);
+    }
+
+    &--play img {
+        filter: grayscale(0%);
     }
 
     &__rait {
+        padding-bottom: 7px;
+        @include flex ($justify: space-around);
+        // padding-top: 10px;
+        @include text-header($size: 20px);
+        color: $main-color;
+    }
+
+    &--statistic {
+        filter: grayscale(100%);
+    }
+
+    &--good img,
+    &--bad img {
+        filter: grayscale(0%);
+    }
+
+    &.card--good::before,
+    &.card--bad::before {
+        content: '';
         position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 1;
-        width: 50%;
-        height: 20%;
-        border-bottom-left-radius: 40px;
-        
-        background-color: $second-color;
-        @include flex ($align: flex-start);
-        padding-top: 10px;
+        left: 10px;
+        bottom: 10px;
+        z-index: 3;
+        @include bg-img();
+    }
+
+    &.card--good::before {
+        background-image: url(../assets/images/vector/check-true.svg);
+    }
+
+    &.card--bad::before {
+        background-image: url(../assets/images/vector/check-false.svg);
     }
 }

@@ -25,6 +25,8 @@
                 </li>
             </ul>
         </nav>
+        <span class="header__name">Мое имя</span>
+        <button class="btn btn-img btn-login btn-login-inactive"></button>
         <button class="btn btn-img btn-settings"></button>
     </header>
     <main class="content">
@@ -158,6 +160,15 @@
             <button class="btn settings__close btn-img btn-close"></button>
         </div>
         <form class="settings__form">
+            <h3 class="settings__head">Сохранять статистику</h3>
+            <div class="settings__wrap">
+                <input id="check" class="settings__checkbox settings__save-stat" type="checkbox" checked>
+                <div class="settings__off">выкл</div>
+                <label class="settings__check-label" for="check">
+                    <div class="settings__check-circle"></div>
+                </label>
+                <div class="settings__on">вкл</div>
+            </div>
             <h3 class="settings__head">Звук</h3>
             <div class="settings__wrap">
                 <button class="btn btn-img btn-sound--off"></button>
@@ -166,7 +177,7 @@
             </div>
             <h3 class="settings__head">Игра на время</h3>
             <div class="settings__wrap">
-                <input id="check" class="settings__checkbox" type="checkbox" checked>
+                <input id="check" class="settings__checkbox settings__time" type="checkbox" checked>
                 <div class="settings__off">выкл</div>
                 <label class="settings__check-label" for="check">
                     <div class="settings__check-circle"></div>
@@ -189,7 +200,7 @@
         <div class="modal">
             <button class="btn modal__close btn-img btn-close btn-close-black"></button>
             <div class="modal__img-wrapper">
-                <img src="./assets/images/vector/cup.svg">
+                <img>
             </div>
             <h3 class="modal__head"></h3>
             <p class="modal__desc">Вы хотите покинуть игру?</p>

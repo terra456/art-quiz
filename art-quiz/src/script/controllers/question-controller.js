@@ -94,7 +94,7 @@ class QuestionController {
     }
 
     isAnswerRight = (answer, rightAnswer) => {
-        this.modal.renderResult(`mini/${this.data[this.questionNumber].imageNum}.jpg`,
+        this.modal.renderResult(`/full/${this.data[this.questionNumber].imageNum}full.jpg`,
                                 this.data[this.questionNumber].author, this.data[this.questionNumber].name, true);
 
         const img = document.querySelector('.modal__img-wrapper');
