@@ -58,6 +58,20 @@
             height: 30px;
         }
     }
+
+    &__table--stat {
+        border: none;
+
+        & th,
+        & td {
+            padding: 10px;
+            border: none;
+        }
+    }
+
+    &__table--result {
+        width: 80%; 
+    }
 }
 
 @keyframes disappiar-center {

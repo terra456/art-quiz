@@ -1,17 +1,29 @@
 class LocalStorageModel {
+
     getLScategories = (key) => {
-        if (localStorage.getItem(key)) {
-            console.log(key);
-            const lsData = JSON.parse(localStorage.getItem(key));
-            return lsData;       
+        let str = localStorage.getItem(key);
+        if (str.startsWith('{')) {
+            console.log(str, str.startsWith('{'));
+            const lsData = JSON.parse(str);
+            if (lsData) {
+                return lsData;   
+            } else {
+                return;
+            }
         } else {
             return;
         }
     }
 
-    getLSsettings = (field) => {
-        if (localStorage.user) {
-            return localStorage.user[field];
+    getLSsettings = (field, userName = 'user') => {
+        if (localStorage[userName]) {
+            const res = this.getLScategories(userName);
+            if (res) {
+                console.log(res);
+                return res[field] ? res[field] : null;
+            } else {
+                return;
+            }
         } else {
             return false;
         }
@@ -25,13 +37,13 @@ class LocalStorageModel {
         localStorage[key] = value;
     }
 
-    setLSsettings = (field, value) => {
-        if (!localStorage.user) {
+    setLSsettings = (field, value, userName = 'user') => {
+        if (!localStorage[userName]) {
             let res = {};
             res[field] = value;
-            localStorage.setItem('user', JSON.stringify(res));
+            localStorage.setItem(userName, JSON.stringify(res));
         } else {
-            let res = this.getLScategories('user');
+            let res = this.getLScategories(userName);
             console.log(res);
             if (res) {
                 res[field] = value;
@@ -40,12 +52,12 @@ class LocalStorageModel {
                 res[field] = value;
             }
             let jsData = JSON.stringify(res);
-            localStorage.user = jsData;
+            localStorage[userName] = jsData;
         }
     }
 
-    setLScategorie = (key, roundN, right) => {
-        let res = this.getLScategories(key);
+    setLScategorie = (key, roundN, right, userName = 'user') => {
+        let res = this.getLScategories(userName + '.' + key);
         console.log(res);
 
         if (res) {
@@ -58,11 +70,11 @@ class LocalStorageModel {
         }
         let jsData = JSON.stringify(res);
         console.log(jsData);
-        localStorage[key] = jsData;
+        localStorage[userName + '.' + key] = jsData;
     }
 
-    setLSpicture = (N, answer) => {
-        let res = this.getLScategories('pictures');
+    setLSpicture = (N, answer, userName = 'user') => {
+        let res = this.getLScategories(userName + '.' + 'pictures');
         console.log(res);
 
         if (res) {
@@ -74,7 +86,7 @@ class LocalStorageModel {
 
         let jsData = JSON.stringify(res);
         console.log(jsData);
-        localStorage['pictures'] = jsData;
+        localStorage[userName + '.' + 'pictures'] = jsData;
     }
 
 }

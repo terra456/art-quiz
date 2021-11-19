@@ -72,7 +72,7 @@ class QuestionController {
                 evt.preventDefault();
                 const res = this.isAnswerRight(el.textContent, rightAnswer);
                 //set LS -1, because it change in isAnswerRight
-                this.lsModel.setLSpicture(this.data[this.questionNumber - 1].imageNum, res);
+                this.lsModel.setLSpicture(this.data[this.questionNumber - 1].imageNum, res, localStorage.currentUser);
 
                 if (this.questionNumber < 10) {
                     this.generateImageQuestion();
@@ -129,7 +129,7 @@ class QuestionController {
 
         //запись данных в локалсторадж
         
-        this.lsModel.setLScategorie(this.typeOfGame, this.roundNumber, this.rights);
+        this.lsModel.setLScategorie(this.typeOfGame, this.roundNumber, this.rights, localStorage.currentUser);
 
         console.log(this.roundNumber + 'right' + this.rights);
         

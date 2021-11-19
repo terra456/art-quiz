@@ -3,6 +3,7 @@ import HomeController from './home-controller';
 import CategoryController from './category-controller';
 import LocalStorageModel from '../models/local-storage-model';
 import StatController from './stat-controller';
+import LoginController from './login-controller';
 
 class AppController {
     constructor () {
@@ -16,6 +17,7 @@ class AppController {
         document.querySelector('.navigation__item--home').onclick = this.btnHomeHandler;
         document.querySelector('.navigation__item--cat').onclick = this.btnCategoryHandler;
         document.querySelector('.navigation__item--stat').onclick = this.btnStatHandler;
+        document.querySelector('.btn-login').onclick = this.btnLoginHandler;
         document.querySelector('.btn-settings').onclick = this.btnSettingsHandler;
         document.querySelector('.settings__close').onclick = this.btnSettingsCloseHandler;
     }
@@ -26,7 +28,7 @@ class AppController {
     }
 
     btnCategoryHandler = () => {
-        const gameType = this.lsModal.getLSsettings('currentGameType');
+        const gameType = this.lsModal.getLSsettings('currentGameType', localStorage.currentUser);
         const catC = new CategoryController(gameType ? gameType : 'painter');
         catC.getCategoryList();
     }
@@ -47,6 +49,14 @@ class AppController {
             settings.classList.remove('hide');
             settings.classList.add('display-none');
         }, 1000);
+    }
+
+    btnLoginHandler = () => {
+        const loginForm = document.querySelector('.login');
+        loginForm.classList.remove('display-none');
+        loginForm.classList.add('login__show');
+        const login = new LoginController();
+        login.start();
     }
 
 }

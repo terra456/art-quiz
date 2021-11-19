@@ -3,6 +3,7 @@
     margin-bottom: 4vh;
 
     &__name {
+        position: relative;
         width: 300px;
         @include text-header;
         text-align: right;

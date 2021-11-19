@@ -84,8 +84,29 @@ class StatPictureView {
 
     }
 
-    renderRate = (userList, currentRes) => {
-
+    renderRate = (userList, currentUser) => {
+        const content = document.querySelector('.content__cards');
+        const bestResult = userList[0].result;
+        content.innerHTML = `<table class="content__table content__table--stat">
+                                <thead>
+                                    <th>Позиция</th>
+                                    <th>Имя пользователя</th>
+                                    <thclass="content__table--result"></th>
+                                    <th>Результат</th>
+                                </thead>
+                                <tbody></tbody></table>`;
+        const table = document.querySelector('tbody');
+        for (let i = 0; i < userList.length; i++) {
+            let user = userList[i];
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${ i + 1 }</td>
+                            <td>${ user.userName }</td>
+                            <td class="content__table--result"><div style="width: ${ user.result / bestResult * 100 }%; height: 10px; background-color: ${ user.userName == currentUser ? 'red' : 'white'}"><div></td>
+                            <td>${ user.result }</td>
+                            `;
+            
+            table.appendChild(tr);
+        }
     }
 }
 
