@@ -4,15 +4,16 @@ import CategoryController from './category-controller';
 import LocalStorageModel from '../models/local-storage-model';
 import StatController from './stat-controller';
 import LoginController from './login-controller';
+import SettingsController from './settings-controller';
 
 class AppController {
     constructor () {
-        this.main = document.querySelector('.content');        
+        this.main = document.querySelector('.content');
         this.homeC = new HomeController();
         this.lsModal = new LocalStorageModel();
     }
     
-    startApp = () => {        
+    startApp = () => {
         this.homeC.showHome();
         document.querySelector('.navigation__item--home').onclick = this.btnHomeHandler;
         document.querySelector('.navigation__item--cat').onclick = this.btnCategoryHandler;
@@ -20,6 +21,8 @@ class AppController {
         document.querySelector('.btn-login').onclick = this.btnLoginHandler;
         document.querySelector('.btn-settings').onclick = this.btnSettingsHandler;
         document.querySelector('.settings__close').onclick = this.btnSettingsCloseHandler;
+        const settingsController = new SettingsController(localStorage.currentUser);
+        settingsController.start();
     }
    
 

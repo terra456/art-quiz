@@ -49,116 +49,7 @@
     <main class="content">
         
     </main>
-    <!-- <main class="content">
-        <div class="content__home">
-            <button class="btn btn-text btn-game">
-                угадать художника по картине
-            </button>
-            <button class="btn btn-text btn-game">
-                угадать картину по имени её автора
-            </button>
-        </div>
-    </main> -->
-
-    <!-- <main class="content">
-        <h2 class="content__head">Категории</h2>
-        <div class="content__cards">
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/102.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/112.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/116.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/115.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/114.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/113.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/114.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/113.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/114.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/113.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/114.jpg">
-            </div>
-            <div class="card">
-                <div class="card__rait">8/10</div>
-                <img class="card__img" src="./assets/images/mini/113.jpg">
-            </div>
-        </div>
-    </main> -->
-
-    <!-- <main class="content">
-        <div class="question question--pictures">
-            <div class="question__timer">
-                <button class="btn btn-img btn-close"></button>
-                <input class="question__range" type="range">
-                <span class="question__time">00:25</span>
-            </div>            
-            <p class="question__desc">Чья это картина?</h2>
-            <div class="question__answers">
-                <div class="question__answer">
-                    <img class="question__img" src="./assets/images/mini/124.jpg">
-                </div>
-                <div class="question__answer">
-                    <img class="question__img" src="./assets/images/mini/125.jpg">
-                </div>
-                <div class="question__answer">
-                    <img class="question__img" src="./assets/images/mini/127.jpg">
-                </div>
-                <div class="question__answer">
-                    <img class="question__img" src="./assets/images/mini/130.jpg">
-                </div>
-            </div>
-        </div>
-    </main> -->
-
-    <!-- <main class="content">
-        <div class="question question--painter">
-            <div class="question__timer">
-                <button class="btn btn-img btn-close"></button>
-                <input class="question__range" type="range">
-                <span class="question__time">00:05</span>
-            </div>
-            <p class="question__desc">Кто автор этой картины?</p>
-            <div class="question__big-img">
-                <img src="./assets/images/full/103full.jpg">
-            </div>
-            <div class="question__answers--btn">
-                <button class="btn btn-text" type="reset">Пьер Огюст Ренуар</button>
-                <button class="btn btn-text" type="submit">Константин Маковский</button>
-                <button class="btn btn-text" type="reset">Веронезе</button>
-                <button class="btn btn-text" type="submit">Илья Репин</button>
-            </div>
-        </div>
-    </main> -->
-
+    
     <footer class="footer">
         <div>
             <a href="https://rs.school/js/">
@@ -179,9 +70,9 @@
         <form class="settings__form">
             <h3 class="settings__head">Сохранять статистику</h3>
             <div class="settings__wrap">
-                <input id="check" class="settings__checkbox settings__save-stat" type="checkbox" checked>
+                <input id="save-stat" class="settings__checkbox settings__save-stat" type="checkbox">
                 <div class="settings__off">выкл</div>
-                <label class="settings__check-label" for="check">
+                <label class="settings__check-label" for="save-stat">
                     <div class="settings__check-circle"></div>
                 </label>
                 <div class="settings__on">вкл</div>
@@ -189,14 +80,14 @@
             <h3 class="settings__head">Звук</h3>
             <div class="settings__wrap">
                 <button class="btn btn-img btn-sound--off"></button>
-                <input class="settings__range" type="range">
+                <input id="volume" class="settings__range" type="range">
                 <button class="btn btn-img btn-sound--on"></button>
             </div>
             <h3 class="settings__head">Игра на время</h3>
             <div class="settings__wrap">
-                <input id="check" class="settings__checkbox settings__time" type="checkbox" checked>
+                <input id="timer" class="settings__checkbox settings__time" type="checkbox">
                 <div class="settings__off">выкл</div>
-                <label class="settings__check-label" for="check">
+                <label class="settings__check-label" for="timer">
                     <div class="settings__check-circle"></div>
                 </label>
                 <div class="settings__on">вкл</div>
@@ -204,12 +95,12 @@
             <h3 class="settings__head">Время на ответ</h3>
             <div class="settings__wrap">
                 <button class="btn btn-text btn-round btn-min">--</button>
-                <input class="settings__input settings__input--time" type="number" min="5" max="30" step="5" value="20">
+                <input id="time" class="settings__input settings__input--time" type="number" min="5" max="30" step="5">
                 <button class="btn btn-text btn-round btn-max">+</button>
             </div>
             <div class="settings__wrap">
-                <button class="btn btn-text btn-text--normal" type="reset">Сбросить</button>
-                <button class="btn btn-text btn-text--active" type="submit">Cохранить</button>
+                <button class="btn btn-text btn-text--reset">Сбросить</button>
+                <button class="btn btn-text btn-text--save">Cохранить</button>
             </div>
         </form>
     </div>

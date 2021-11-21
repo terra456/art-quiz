@@ -32,7 +32,7 @@ class CategoryController {
             }
         }
         const lsM = new LocalStorageModel();
-        const res = lsM.getLScategories(localStorage.currentUser + '.' + this.name, );
+        const res = lsM.getLScategories(localStorage.currentUser + '.' + this.name);
         console.log(res);
         lsM.setLSsettings('currentGameType', this.name, localStorage.currentUser);
         const catV = new CategoryView(this.name);

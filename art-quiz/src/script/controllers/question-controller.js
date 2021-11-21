@@ -16,6 +16,11 @@ class QuestionController {
         this.rights = 0;
         this.modal = new ModalView();
         this.lsModel = new LocalStorageModel();
+        this.isSound = this.lsModel.getLSsettings('isSound', localStorage.currentUser);
+        this.isTimer = this.lsModel.getLSsettings('isTimer', localStorage.currentUser);
+        this.timeSettings = this.lsModel.getLSsettings('time', localStorage.currentUser);
+        this.time = this.timeSettings;
+        this.timerId;
     }
 
     setAnswers = (arr) => {
@@ -51,6 +56,7 @@ class QuestionController {
         questionView.render(questionDesc, shuffleArray(falseAnswers), this.questionNumber, this.roundNumber);
         this.answerImageHandler(document.querySelectorAll('.btn-answer'), rightAnswer);
         document.querySelector('.question__close').onclick = this.questionCloseHandler;
+        this.startTimer();
     }
 
     generatePainterQuestion = () => {
@@ -64,6 +70,7 @@ class QuestionController {
         questionView.render(questionDesc, shuffleArray(falseAnswers), this.questionNumber, this.roundNumber);
         this.answerPainterHandler(document.querySelectorAll('.question__answer'), rightAnswer);
         document.querySelector('.question__close').onclick = this.questionCloseHandler;
+        this.startTimer();
     }
 
     answerImageHandler = (nodeL, rightAnswer) => {
@@ -86,14 +93,14 @@ class QuestionController {
             el.addEventListener('click', (evt) => {
                 evt.preventDefault();
                 this.isAnswerRight((el.firstChild.src).split('/').pop().split('.')[0], rightAnswer);
-                if (this.questionNumber < 10) {
-                    this.generatePainterQuestion();
-                }
+                
             })
         })
     }
 
     isAnswerRight = (answer, rightAnswer) => {
+        clearTimeout(this.timerId);
+        this.time = this.timeSettings;
         this.modal.renderResult(`/full/${this.data[this.questionNumber].imageNum}full.jpg`,
                                 this.data[this.questionNumber].author, this.data[this.questionNumber].name, true);
 
@@ -102,12 +109,10 @@ class QuestionController {
 
         this.questionNumber++;
         if (answer == rightAnswer) {
-            this.rights++;
-            
+            this.rights++;            
             img.classList.add('right-answer');
             return true;
-        } else {
-            
+        } else {            
             img.classList.add('wrong-answer');
             console.log('Error!!!!!!!!!!');
             return false;
@@ -157,8 +162,10 @@ class QuestionController {
 
     questionModalHandler = () => {
         this.modal.close();
-        if (this.questionNumber === 10) {
-                this.generateResult();
+        if (this.questionNumber < 10) {
+            this.generateQuestion();
+        } else if (this.questionNumber === 10) {
+            this.generateResult();
         }
     }
 
@@ -171,6 +178,22 @@ class QuestionController {
             catCont.getCategoryList();
         }, 500);
     }
+
+    startTimer = () => {
+        const currentTimeDiv = document.querySelector('.question__currentTime');
+        const currentTimeSpan = document.querySelector('.question__time');
+        this.time = this.time - 1;
+        currentTimeSpan.textContent = `00:${this.time < 10 ? '0' + this.time : this.time}`;
+        currentTimeDiv.style = `width: ${this.time / this.timeSettings * 100}%`;
+        if (this.time == 0) {
+            this.isAnswerRight(null, 'undefined');
+            console.log('Время вышло (((');
+        } else {
+            this.timerId = setTimeout(this.startTimer, 1000);
+        }
+    }
+
+
 
 }
 

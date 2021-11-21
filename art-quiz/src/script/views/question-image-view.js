@@ -5,7 +5,11 @@ class QuestionImageView {
             <div class="question question--painter">
                 <div class="question__timer">
                     <button class="btn question__close btn-img btn-close"></button>
-                    <input class="question__range" type="range">
+                    <div class="question__range">
+                        <div class="question__timer">
+                            <div class="question__currentTime"><div>
+                        <div>
+                    </div>
                     <span class="question__time">00:05</span>
                 </div>
                 <h2 class="question__head">Раунд ${rN + 1}</h2>

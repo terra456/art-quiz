@@ -2,7 +2,7 @@ class LocalStorageModel {
 
     getLScategories = (key) => {
         let str = localStorage.getItem(key);
-        if (str.startsWith('{')) {
+        if (str && str.startsWith('{')) {
             console.log(str, str.startsWith('{'));
             const lsData = JSON.parse(str);
             if (lsData) {
@@ -25,7 +25,7 @@ class LocalStorageModel {
                 return;
             }
         } else {
-            return false;
+            return;
         }
     }
 
