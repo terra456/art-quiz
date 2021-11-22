@@ -26,14 +26,11 @@ class CategoryController {
             let catList = images.slice(i, i + 10);            
             if (catList.length === 10) {
                 this.rounds.push( ( i / 10 ) );
-
                 this.roundsData.push(catList);
-                // console.log(catList);
             }
         }
         const lsM = new LocalStorageModel();
         const res = lsM.getLScategories(localStorage.currentUser + '.' + this.name);
-        console.log(res);
         lsM.setLSsettings('currentGameType', this.name, localStorage.currentUser);
         const catV = new CategoryView(this.name);
         catV.render(this.rounds, res);
@@ -44,11 +41,11 @@ class CategoryController {
         const questions = new QuestionController(this.name, this.roundNumber, this.roundsData);
         if (this.name == 'painter') {
             questions.setAnswers(this.imgS);
-            questions.generatePainterQuestion();
+            questions.generateQuestion();
         } else if (this.name == 'image') {
             this.getPainters();
             questions.setAnswers(Array.from(this.painters));
-            questions.generateImageQuestion();
+            questions.generateQuestion();
         }
         this.roundNumber++;
     }

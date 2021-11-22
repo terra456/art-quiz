@@ -46,16 +46,13 @@ class QuestionController {
         }
     }
 
-    generateQuestion = () => {
-        
+    generateQuestion = () => {        
         if (this.typeOfGame == 'painter') {
             this.generatePainterQuestion();
         } else if (this.typeOfGame == 'image') {
             this.generateImageQuestion();
         }
-        if (this.isTimer) {
-            document.querySelector('.question__pause').onclick = this.pauseTimer;
-        }
+
     }
 
     generateImageQuestion = () => {
@@ -71,6 +68,7 @@ class QuestionController {
         if (this.isTimer) {
             questionView.renderTimerLine();
             this.startTimer();
+            document.querySelector('.question__pause').onclick = this.pauseTimer;
         }
         document.querySelector('.question__close').onclick = this.questionCloseHandler;
     }
@@ -88,6 +86,7 @@ class QuestionController {
         if (this.isTimer) {
             questionView.renderTimerLine();
             this.startTimer();
+            document.querySelector('.question__pause').onclick = this.pauseTimer;
         }
         document.querySelector('.question__close').onclick = this.questionCloseHandler;
     }

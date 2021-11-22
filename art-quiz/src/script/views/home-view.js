@@ -8,10 +8,10 @@ class HomeView {
         parent.innerHTML = 
                         `<div class="content__home">
                             <button id="painter" class="btn btn-text btn-game">
-                                угадать художника по картине
+                                угадать картину по имени её автора                            
                             </button>
                             <button id="image" class="btn btn-text btn-game">
-                                угадать картину по имени её автора
+                                угадать художника по картине
                             </button>
                         </div>`;
     } 

@@ -97,9 +97,9 @@
             </div>
             <h3 class="settings__head">Время на ответ</h3>
             <div class="settings__wrap">
-                <button class="btn btn-text btn-round btn-min">--</button>
+                <button class="btn btn-text btn-round btn-min" onclick="this.nextElementSibling.stepDown()">--</button>
                 <input id="time" class="settings__input settings__input--time" type="number" min="5" max="30" step="5">
-                <button class="btn btn-text btn-round btn-max">+</button>
+                <button class="btn btn-text btn-round btn-max" onclick="this.previousElementSibling.stepUp()">+</button>
             </div>
             <div class="settings__wrap">
                 <button class="btn btn-text btn-text--reset">Сбросить</button>

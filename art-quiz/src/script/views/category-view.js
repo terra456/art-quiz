@@ -21,7 +21,7 @@ class CategoryView {
             card.classList.add('card');
             card.innerHTML = `
             <div class="card__rait"></div>
-            <img class="card__img" src="./assets/images/mini/${images[round * 10].imageNum}.jpg">
+            <img class="card__img" src="./assets/images/mini/${this.name === 'painter' ? images[round * 10].imageNum : images[(round * 10) + 2].imageNum}.jpg">
             `;
             
             if (results && results[round]) {
