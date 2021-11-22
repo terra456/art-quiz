@@ -25,7 +25,7 @@ class ModalView {
         this.modal.classList.remove('modal-none');
         this.overlay.classList.remove('display-none');
         this.overlay.onclick = this.close;
-        this.modal.querySelector('.btn-close-black').onclick = this.close;
+        // this.modal.querySelector('.btn-close-black').onclick = this.close;
     }
 
     close = () => {

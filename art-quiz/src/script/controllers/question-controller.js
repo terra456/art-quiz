@@ -81,9 +81,6 @@ class QuestionController {
                 //set LS -1, because it change in isAnswerRight
                 this.lsModel.setLSpicture(this.data[this.questionNumber - 1].imageNum, res, localStorage.currentUser);
 
-                if (this.questionNumber < 10) {
-                    this.generateImageQuestion();
-                }
             })
         })
     }
@@ -106,6 +103,7 @@ class QuestionController {
 
         const img = document.querySelector('.modal__img-wrapper');
         document.querySelector('.btn-text--next').onclick = this.questionModalHandler;
+        document.querySelector('.modal__close').onclick = this.questionModalHandler;
 
         this.questionNumber++;
         if (answer == rightAnswer) {
@@ -141,6 +139,7 @@ class QuestionController {
         
         document.querySelector('.btn-text--next').onclick = this.resultNextHandler;
         document.querySelector('.btn-text--repeat').onclick = this.resultRepeatHandler;
+        document.querySelector('.modal__close').onclick = this.resultCloseHandler;
         
         // this.resultModalHandler();
         this.questionNumber = 0;
@@ -157,6 +156,12 @@ class QuestionController {
 
     resultRepeatHandler = () => {
         this.generateQuestion();
+        this.modal.close();
+    }
+
+    resultCloseHandler = () => {
+        const catCont = new CategoryController(this.typeOfGame);
+        catCont.getCategoryList();
         this.modal.close();
     }
 
@@ -185,6 +190,7 @@ class QuestionController {
         this.time = this.time - 1;
         currentTimeSpan.textContent = `00:${this.time < 10 ? '0' + this.time : this.time}`;
         currentTimeDiv.style = `width: ${this.time / this.timeSettings * 100}%`;
+        console.log(this.time);
         if (this.time == 0) {
             this.isAnswerRight(null, 'undefined');
             console.log('Время вышло (((');
