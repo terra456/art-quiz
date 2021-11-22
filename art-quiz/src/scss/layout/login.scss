@@ -8,16 +8,21 @@
     padding: 40px;
     box-sizing: border-box;
     border-radius: 20px;
+    color: $dark-color;
     
     &__show {
         animation: show-login 500ms linear;
     }
     // transform: translate(200px, 100px);
 
-    & .btn-text-login {
+    & .btn-text-login,
+    & .btn-text-logout,
+    & .btn-text-register {
         margin-top: 40px;
+        padding: 10px 15px;
         height: 40px;
         width: 45%;
+        box-sizing: border-box;
         background-color: $second-color;
     }
 
@@ -29,6 +34,11 @@
     &__wrap {
         @include flex();
         gap: 20px;
+    }
+
+    &__message {
+        text-align: left;
+        margin-bottom: 20px;
     }
 
     &__close {

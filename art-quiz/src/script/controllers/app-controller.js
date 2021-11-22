@@ -6,11 +6,13 @@ import StatController from './stat-controller';
 import LoginController from './login-controller';
 import SettingsController from './settings-controller';
 
+
 class AppController {
     constructor () {
         this.main = document.querySelector('.content');
         this.homeC = new HomeController();
         this.lsModal = new LocalStorageModel();
+        this.loginCont = new LoginController();
     }
     
     startApp = () => {
@@ -23,6 +25,7 @@ class AppController {
         document.querySelector('.settings__close').onclick = this.btnSettingsCloseHandler;
         const settingsController = new SettingsController(localStorage.currentUser);
         settingsController.start();
+        this.loginCont.start();
     }
    
 
@@ -58,8 +61,7 @@ class AppController {
         const loginForm = document.querySelector('.login');
         loginForm.classList.remove('display-none');
         loginForm.classList.add('login__show');
-        const login = new LoginController();
-        login.start();
+        this.loginCont.start();
     }
 
 }

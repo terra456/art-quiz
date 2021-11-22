@@ -71,7 +71,7 @@
     background-image: url(../assets/images/vector/user-inactive.svg);
 }
 
-.btn-logout {
+.btn-login.btn-logout {
     width: 34px;
     @include bg-img ($x: 34px);
     background-image: url(../assets/images/vector/exit-icon.svg);
