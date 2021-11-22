@@ -20,6 +20,15 @@ class CategoryController {
         }
     }
 
+    getImages = () => {
+        const arr = [];
+        for (let painter of this.painters) {
+            let element = images.find((el) => el.author == painter );
+            arr.push(element.imageNum);
+        }
+        return arr;
+    }
+
     getCategoryList = () => {
         console.log(images.length);
         for (let i = 0; i < images.length; i = i + 10) {
@@ -40,7 +49,8 @@ class CategoryController {
     playGame = () => {
         const questions = new QuestionController(this.name, this.roundNumber, this.roundsData);
         if (this.name == 'painter') {
-            questions.setAnswers(this.imgS);
+            this.getPainters();
+            questions.setAnswers(this.getImages());
             questions.generateQuestion();
         } else if (this.name == 'image') {
             this.getPainters();

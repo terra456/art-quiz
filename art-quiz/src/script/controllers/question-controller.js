@@ -219,6 +219,7 @@ class QuestionController {
             content.classList.remove('disappiar');
             const catCont = new CategoryController(this.typeOfGame);
             catCont.getCategoryList();
+            document.querySelector('.question__overlay').classList.add('display-none');
         }, 500);
     }
 
