@@ -17,10 +17,19 @@ class QuestionController {
         this.modal = new ModalView();
         this.lsModel = new LocalStorageModel();
         this.isSound = this.lsModel.getLSsettings('isSound', localStorage.currentUser);
+        this.volume = this.lsModel.getLSsettings('volume', localStorage.currentUser) / 100;
         this.isTimer = this.lsModel.getLSsettings('isTimer', localStorage.currentUser);
         this.timeSettings = this.lsModel.getLSsettings('time', localStorage.currentUser);
         this.time = this.timeSettings;
         this.timerId;
+        this.correctMp3 = new Audio('./assets/audio/correct.mp3');
+        this.errorMp3 = new Audio('./assets/audio/error.mp3');
+        this.failureMp3 = new Audio('./assets/audio/failure.mp3');
+        this.successMp3 = new Audio('./assets/audio/success.mp3');
+        this.correctMp3.volume = this.volume;
+        this.errorMp3.volume = this.volume;
+        this.failureMp3.volume = this.volume;
+        this.successMp3.volume = this.volume;
     }
 
     setAnswers = (arr) => {
@@ -38,6 +47,7 @@ class QuestionController {
     }
 
     generateQuestion = () => {
+        
         if (this.typeOfGame == 'painter') {
             this.generatePainterQuestion();
         } else if (this.typeOfGame == 'image') {
@@ -121,10 +131,16 @@ class QuestionController {
         if (answer == rightAnswer) {
             this.rights++;            
             img.classList.add('right-answer');
+            if (this.isSound) {
+                this.correctMp3.play();
+            }
             return true;
-        } else {            
+        } else {
             img.classList.add('wrong-answer');
             console.log('Error!!!!!!!!!!');
+            if (this.isSound) {
+                this.errorMp3.play();
+            }
             return false;
         }
     }
@@ -133,12 +149,22 @@ class QuestionController {
 
         setTimeout(() => {
             if (this.rights == 10) {
+                if (this.isSound) {
+                    this.successMp3.play();
+                }
                 this.modal.renderResult('vector/group-stars.svg', 'Велликоллепно!', 'Наши поздравления!', true);
             } else if (this.rights >= 8) {
+                if (this.isSound) {
+                    this.successMp3.play();
+                }
                 this.modal.renderResult('vector/cup.svg', this.rights + ' / 10', 'Поздравляем!', false);
             } else {
+                if (this.isSound) {
+                    this.failureMp3.play();
+                }
                 this.modal.renderResult('vector/cup-broke.svg', this.rights + ' / 10', 'Cыграть снова?', false);
             }
+            
             this.rights = 0;
         }, 500);
 

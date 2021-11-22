@@ -41,15 +41,12 @@ class StatController {
             }
         }
         userList.sort((a, b) => { return b.result - a.result });
-        console.log(userList);
         this.statView.renderRate(userList, localStorage.currentUser);
     }
 
     pictureHandler() {
-        console.log(this.id);
         const modal = new ModalView();
-        const desk = images[this.id]
-        console.log(desk);
+        const desk = images[this.id];
         modal.renderResult(`/full/${this.id}full.jpg`, desk.author, desk.name + ', ' + desk.year, null, true);
     }
 
