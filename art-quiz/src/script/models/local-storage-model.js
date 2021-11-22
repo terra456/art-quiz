@@ -55,7 +55,6 @@ class LocalStorageModel {
 
     setLScategorie = (key, roundN, right, userName = 'user') => {
         let res = this.getLScategories(userName + '.' + key);
-        console.log(res);
 
         if (res) {
             if (!res[roundN] || res[roundN] < right) {

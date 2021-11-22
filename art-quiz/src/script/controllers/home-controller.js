@@ -18,7 +18,6 @@ class HomeController {
         btns.forEach((el) => {
             el.addEventListener('click', (evt) => {
                 evt.preventDefault();
-                console.log(el.id);
                 const catC = new CategoryController(el.id);
                 catC.getCategoryList();
             })

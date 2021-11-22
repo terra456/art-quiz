@@ -35,16 +35,12 @@ class StatPictureView {
             const card = document.createElement('div');
             card.id = picture.imageNum;
             card.classList.add('card');
-            // card.classList.add('card--statistic');
             card.innerHTML = `
-                            
-                            <img class="card__img" src="./assets/images/mini/${picture.imageNum}.jpg">
-            `;
+                    <img class="card__img" src="./assets/images/mini/${picture.imageNum}.jpg">
+                `;
             if (results && results[picture.imageNum] === true) {
-                console.log(results[picture.imageNum], picture.imageNum);
                 card.classList.add('card--good');
             } else if (results && results[picture.imageNum] === false) {
-                console.log(results[picture.imageNum], picture.imageNum);
                 card.classList.add('card--bad');
             }
             content.appendChild(card);

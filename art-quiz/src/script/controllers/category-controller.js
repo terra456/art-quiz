@@ -30,7 +30,6 @@ class CategoryController {
     }
 
     getCategoryList = () => {
-        console.log(images.length);
         for (let i = 0; i < images.length; i = i + 10) {
             let catList = images.slice(i, i + 10);            
             if (catList.length === 10) {

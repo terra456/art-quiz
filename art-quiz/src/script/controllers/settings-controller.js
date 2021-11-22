@@ -23,7 +23,6 @@ class SettingsController{
 
     start = () => {       
         const savedSettings = this.lsModel.getLScategories(this.userName);
-        console.log(savedSettings);
         if (savedSettings) {
             if (typeof(savedSettings.isSaveStat) == Boolean) {
                 this.isSaveStat = savedSettings.isSaveStat;                

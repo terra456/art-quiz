@@ -12,7 +12,6 @@ class StatController {
     statPicture() {
         const res = this.lsModel.getLScategories(localStorage.currentUser + '.' + 'pictures'); 
         this.statView.render(res);
-        console.log(document.querySelectorAll('.navigation'));
         document.querySelector('.navigation__item--pictures').onclick = this.btnPictureHandler;
         document.querySelector('.navigation__item--res').onclick = this.btnResHandler;
         document.querySelector('.navigation__item--rate').onclick = this.btnRateHandler;
@@ -35,7 +34,6 @@ class StatController {
                 continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
             }
             const userName = this.lsModel.getLSsettings('name', key);
-            console.log(userName);
             if (userName) {
                 userList.push({userName: userName, result: this.getTotal(userName)});
             }
@@ -61,11 +59,8 @@ class StatController {
     getAverage = (name) => {
         if (localStorage[localStorage.currentUser + '.' + name]) {
             const res = this.lsModel.getLScategories(localStorage.currentUser + '.' + name);
-            console.log(res);
             const resArr = Object.values(res);
             const resAverage = Math.round(resArr.reduce((acc, el) => { return acc + (el * 100) }, 0) / resArr.length) / 100;
-            // console.log(resArr.reduce((acc, el) => {return  acc + (el * 100)}, 0));
-            console.log(resAverage);
             return resAverage;
         } else {
             return null;

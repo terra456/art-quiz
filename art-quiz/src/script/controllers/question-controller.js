@@ -41,7 +41,6 @@ class QuestionController {
         if (arr.every((el) => el !== rightAnswer)) {
             return arr;
         } else {
-            console.log('В ответах есть 2 правильных');
             return this.generateAnswers(rightAnswer);
         }
     }
@@ -136,7 +135,6 @@ class QuestionController {
             return true;
         } else {
             img.classList.add('wrong-answer');
-            console.log('Error!!!!!!!!!!');
             if (this.isSound) {
                 this.errorMp3.play();
             }
@@ -167,19 +165,14 @@ class QuestionController {
             this.rights = 0;
         }, 500);
 
-        //запись данных в локалсторадж
-        
+        //запись данных в локалсторадж        
         this.lsModel.setLScategorie(this.typeOfGame, this.roundNumber, this.rights, localStorage.currentUser);
-
-        console.log(this.roundNumber + 'right' + this.rights);
-        
         
         document.querySelector('.btn-text--next').onclick = this.resultNextHandler;
         document.querySelector('.btn-text--repeat').onclick = this.resultRepeatHandler;
         document.querySelector('.modal__close').onclick = this.resultCloseHandler;
         document.querySelector('.modal__overlay').onclick = this.resultCloseHandler;
         
-        // this.resultModalHandler();
         this.questionNumber = 0;
         
     }
@@ -232,7 +225,6 @@ class QuestionController {
         
         if (this.time == 0) {
             this.isAnswerRight(null, 'undefined');
-            console.log('Время вышло (((');
         } else {
             this.timerId = setTimeout(this.startTimer, 1000);
         }

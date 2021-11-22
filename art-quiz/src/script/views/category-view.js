@@ -6,7 +6,6 @@ class CategoryView {
     }
 
     render = (arrRounds, results) => {
-        console.log(results);
         const conteiner = document.querySelector('.content');
         conteiner.innerHTML = `
             <h2 class="content__head">Категория ${this.name}</h2>

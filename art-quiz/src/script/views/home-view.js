@@ -4,7 +4,6 @@ class HomeView {
     }
 
     render = (parent) => {
-        console.log('Home');
         parent.innerHTML = 
                         `<div class="content__home">
                             <button id="painter" class="btn btn-text btn-game">

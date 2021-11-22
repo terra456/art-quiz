@@ -56,7 +56,6 @@ class LoginController {
         if (localStorage.currentUser !== 'user') {
             this.renderIfLogin();
         } else {
-            console.log('no user');
             this.renderIfLogout();
         }
         loginForm.querySelector('.btn-text-login').addEventListener('click', (evt) => {
