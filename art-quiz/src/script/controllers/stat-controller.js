@@ -40,7 +40,7 @@ class StatController {
                 userList.push({userName: userName, result: this.getTotal(userName)});
             }
         }
-        userList.sort((a, b) => { a.result - b.result });
+        userList.sort((a, b) => { return b.result - a.result });
         console.log(userList);
         this.statView.renderRate(userList, localStorage.currentUser);
     }

@@ -54,7 +54,6 @@ class LoginController {
     start = () => {
         const loginForm = document.querySelector('.login__form');
         if (localStorage.currentUser !== 'user') {
-            console.log(localStorage.currentUser);
             this.renderIfLogin();
         } else {
             console.log('no user');
