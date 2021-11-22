@@ -1,16 +1,17 @@
 class QuestionPainterView {
     render (question, answers, qN, rN) {
-        const content = this.container = document.querySelector('.content');
+        const content = document.querySelector('.content');
         content.innerHTML = `
             <div class="question question--pictures">
                 <div class="question__timer">
-                    <button class="btn question__close btn-img btn-close"></button>
+                    <button class="btn question__pause btn-img btn-pause"></button>                    
                     <div class="question__range">
-                        <div class="question__timer">
-                            <div class="question__currentTime"><div>
-                        <div>
+                        <div class="question__time-line">
+                            <div class="question__current-time"></div>
+                        </div>
                     </div>
                     <span class="question__time">00:25</span>
+                    <button class="btn question__close btn-img btn-close"></button>
                 </div>
                 <h2 class="question__head">Раунд ${rN + 1}</h2>
                 <p class="question__desc">${qN + 1} Найдите картину ${question}</p>

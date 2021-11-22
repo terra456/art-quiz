@@ -112,3 +112,12 @@
     height: 36px;
 
 }
+
+.btn-pause {
+    @include bg-img ($x: 28px);
+    background-image: url(../assets/images/vector/pause.svg);
+}
+
+.btn-pause.play {
+    background-image: url(../assets/images/vector/play.svg);
+}

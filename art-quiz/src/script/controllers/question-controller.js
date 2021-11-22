@@ -43,6 +43,7 @@ class QuestionController {
         } else if (this.typeOfGame == 'image') {
             this.generateImageQuestion();
         }
+        document.querySelector('.question__pause').onclick = this.pauseTimer;
     }
 
     generateImageQuestion = () => {
@@ -104,6 +105,7 @@ class QuestionController {
         const img = document.querySelector('.modal__img-wrapper');
         document.querySelector('.btn-text--next').onclick = this.questionModalHandler;
         document.querySelector('.modal__close').onclick = this.questionModalHandler;
+        document.querySelector('.modal__overlay').onclick = this.questionModalHandler;
 
         this.questionNumber++;
         if (answer == rightAnswer) {
@@ -140,6 +142,7 @@ class QuestionController {
         document.querySelector('.btn-text--next').onclick = this.resultNextHandler;
         document.querySelector('.btn-text--repeat').onclick = this.resultRepeatHandler;
         document.querySelector('.modal__close').onclick = this.resultCloseHandler;
+        document.querySelector('.modal__overlay').onclick = this.resultCloseHandler;
         
         // this.resultModalHandler();
         this.questionNumber = 0;
@@ -185,12 +188,12 @@ class QuestionController {
     }
 
     startTimer = () => {
-        const currentTimeDiv = document.querySelector('.question__currentTime');
+        const currentTimeDiv = document.querySelector('.question__current-time');
         const currentTimeSpan = document.querySelector('.question__time');
         this.time = this.time - 1;
         currentTimeSpan.textContent = `00:${this.time < 10 ? '0' + this.time : this.time}`;
         currentTimeDiv.style = `width: ${this.time / this.timeSettings * 100}%`;
-        console.log(this.time);
+        
         if (this.time == 0) {
             this.isAnswerRight(null, 'undefined');
             console.log('Время вышло (((');
@@ -199,7 +202,19 @@ class QuestionController {
         }
     }
 
+    pauseTimer = () => {
+        clearTimeout(this.timerId);
+        document.querySelector('.question__pause').classList.toggle('play');
+        document.querySelector('.question__pause').onclick = this.playTimer;
+        document.querySelector('.question__overlay').classList.toggle('display-none');
+    }
 
+    playTimer = () => {
+        this.startTimer();
+        document.querySelector('.question__pause').classList.toggle('play');
+        document.querySelector('.question__pause').onclick = this.pauseTimer;
+        document.querySelector('.question__overlay').classList.toggle('display-none');
+    }
 
 }
 
