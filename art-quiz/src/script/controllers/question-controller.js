@@ -43,7 +43,9 @@ class QuestionController {
         } else if (this.typeOfGame == 'image') {
             this.generateImageQuestion();
         }
-        document.querySelector('.question__pause').onclick = this.pauseTimer;
+        if (this.isTimer) {
+            document.querySelector('.question__pause').onclick = this.pauseTimer;
+        }
     }
 
     generateImageQuestion = () => {
@@ -56,8 +58,11 @@ class QuestionController {
         const questionView = new QuestionImageView();
         questionView.render(questionDesc, shuffleArray(falseAnswers), this.questionNumber, this.roundNumber);
         this.answerImageHandler(document.querySelectorAll('.btn-answer'), rightAnswer);
+        if (this.isTimer) {
+            questionView.renderTimerLine();
+            this.startTimer();
+        }
         document.querySelector('.question__close').onclick = this.questionCloseHandler;
-        this.startTimer();
     }
 
     generatePainterQuestion = () => {
@@ -70,8 +75,11 @@ class QuestionController {
         const questionView = new QuestionPainterView();
         questionView.render(questionDesc, shuffleArray(falseAnswers), this.questionNumber, this.roundNumber);
         this.answerPainterHandler(document.querySelectorAll('.question__answer'), rightAnswer);
+        if (this.isTimer) {
+            questionView.renderTimerLine();
+            this.startTimer();
+        }
         document.querySelector('.question__close').onclick = this.questionCloseHandler;
-        this.startTimer();
     }
 
     answerImageHandler = (nodeL, rightAnswer) => {
@@ -97,7 +105,9 @@ class QuestionController {
     }
 
     isAnswerRight = (answer, rightAnswer) => {
-        clearTimeout(this.timerId);
+        if (this.isTimer) {
+            clearTimeout(this.timerId);
+        }
         this.time = this.timeSettings;
         this.modal.renderResult(`/full/${this.data[this.questionNumber].imageNum}full.jpg`,
                                 this.data[this.questionNumber].author, this.data[this.questionNumber].name, true);
