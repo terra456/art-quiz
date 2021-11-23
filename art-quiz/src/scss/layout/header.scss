@@ -2,12 +2,50 @@
     @include flex ($justify: space-between);
     margin-bottom: 4vh;
 
+    &__btn-wrap {
+        width: 450px;
+        @include flex($justify: flex-end);
+    }
+
     &__name {
         position: relative;
-        width: 300px;
+        max-width: 300px;
         @include text-header;
         text-align: right;
         color: $main-color;
     }
+
+    & .btn-img {
+        box-sizing: border-box;
+        width: 40px;
+    }   
+
+    @media screen and (max-width: $desc) {
+        &__name {
+            width: 150px;
+            font-size: 18px;
+        }
+
+        & .btn-img {
+            margin-left: 10px;
+        }
+    }
+
+    @media screen and (max-width: $tablet) {
+        &__name {
+            width: 150px;
+            font-size: 18px;
+        }
+    }
+
 }
 
+@media screen and (max-width: 460px) {
+    .logo__img {
+        width: 120px;
+    }
+
+    .header__name {
+        width: 100px;
+    }
+}

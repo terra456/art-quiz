@@ -2,6 +2,7 @@
     position: absolute;
     top: 0;
     right: -50px;
+    z-index: 3;
     background-color: $main-color;
     width: 400px;
     height: 200px;
@@ -13,7 +14,6 @@
     &__show {
         animation: show-login 500ms linear;
     }
-    // transform: translate(200px, 100px);
 
     & .btn-text-login,
     & .btn-text-logout,

@@ -1,5 +1,10 @@
 .footer {
+    height: 75px;
     @include flex ($justify: space-between);
-    @include text-header();
+    @include text-header ($size: 18px);
     color: $main-color;
+
+    & a {
+        font-size: 18px;
+    }
 }

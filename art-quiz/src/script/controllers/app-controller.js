@@ -1,4 +1,3 @@
-import { HomeView } from '../views/app-view';
 import HomeController from './home-controller';
 import CategoryController from './category-controller';
 import LocalStorageModel from '../models/local-storage-model';
